@@ -1,56 +1,132 @@
-/* Style Settings */
-@import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 :root {
-    --bgColor:#1C1C1C;
-    --accentColor: #E6E6E6;
-    --font: 'Karla', sans-serif;
+  --bg: #05070f;
+  --bg-accent: #0b1227;
+  --card: rgba(10, 18, 40, 0.75);
+  --primary: #7cf7ff;
+  --secondary: #8f7cff;
+  --text: #f5f8ff;
+  --muted: #a7b6d6;
+  --border: rgba(124, 247, 255, 0.35);
+  --shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
 }
 
-body{
-    background-color: var(--bgColor);
+* {
+  box-sizing: border-box;
 }
 
-#userPhoto{
-    width: 110px;
-    height: 110px;
-    display: block;
-    margin: 35px auto 20px;
-    border-radius: 50%;
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 15% 15%, rgba(143, 124, 255, 0.22), transparent 40%),
+    radial-gradient(circle at 85% 0%, rgba(124, 247, 255, 0.18), transparent 35%),
+    linear-gradient(145deg, var(--bg), var(--bg-accent));
 }
 
-#userName{
-    color: #bbb;
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 1.25;
-    display: block;
-    font-family: var(--font);
-    width: 100%;
-    text-align: center;
-    text-decoration: none;
+.container {
+  width: min(720px, 92vw);
+  margin: 0 auto;
+  padding: 2.5rem 0 3rem;
 }
 
-#links{
-    max-width: 675px;
-    width: auto;
-    display: block;
-    margin: 27px auto;
-}
-.link{
-    display: block;
-    background-color: var(--accentColor);
-    color: var(--bgColor);
-    font-family: var(--font);
-    text-align: center;
-    margin-bottom: 20px;
-    padding: 17px;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: all .25s cubic-bezier(.08,.59,.29,.99);
-    border: solid var(--accentColor) 2px;
+.profile-card {
+  position: relative;
+  margin: 0 auto 1.6rem;
+  padding: 2rem 1.2rem 1.5rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
 }
 
-.link:hover{
-    background-color: var(--bgColor);
-    color: var(--accentColor);
+#userPhoto {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  border: 3px solid var(--primary);
+  display: block;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  box-shadow: 0 0 20px rgba(124, 247, 255, 0.5);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.25rem, 4vw, 1.8rem);
+}
+
+.subtitle {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+}
+
+.status-pill {
+  display: inline-block;
+  margin: 0 0 0.9rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(143, 124, 255, 0.5);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: #d4ccff;
+  background: rgba(143, 124, 255, 0.14);
+}
+
+#links {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--text);
+  padding: 0.95rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(124, 247, 255, 0.28);
+  background: rgba(14, 26, 56, 0.86);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.link span {
+  font-weight: 600;
+}
+
+.link small {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.link:hover,
+.link:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  box-shadow: 0 8px 20px rgba(124, 247, 255, 0.2);
+  outline: none;
+}
+
+@media (max-width: 540px) {
+  .container {
+    width: min(680px, 94vw);
+    padding-top: 1.3rem;
+  }
+
+  .profile-card {
+    padding: 1.4rem 1rem 1.2rem;
+  }
+
+  .link {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .link small {
+    white-space: normal;
+  }
 }
