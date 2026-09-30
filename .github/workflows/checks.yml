@@ -1,0 +1,22 @@
+name: Check static site
+on:
+  push:
+    branches: [master]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Check links, assets, accessibility references and metadata
+        run: python3 -m unittest discover -s tests -v
+      - name: Check interaction fallbacks
+        run: node --test tests/interactions.test.cjs
+      - name: Check JavaScript syntax
+        run: |
+          node --check assets/js/theme.js
+          node --check assets/js/main.js
+      - name: Check whitespace
+        run: git diff --check
