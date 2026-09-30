@@ -1,45 +1,52 @@
-# LinkFree
+# links.lekler.com.br
 
-A free and open source alternative to LinkTree!
+Página de links de Alexandre “Lekler” Rodrigues, publicada pelo GitHub Pages em
+<https://links.lekler.com.br>.
 
-[Website](https://michaelbarney.github.io/LinkFree)
+Site estático, sem etapa de build, sem JavaScript e sem requisições a terceiros:
+fontes, ícones e imagens são servidos pelo próprio domínio.
 
-<img src="https://i.imgur.com/B4LX0kY.png" alt="alt text" width="250px">
+## Estrutura
 
-## What is LinkFree?
+```text
+index.html                 conteúdo da página (links, bio, metadados)
+assets/css/styles.css      estilos
+assets/fonts/              Space Grotesk (variável) e Chakra Petch 700, subconjunto latin
+assets/img/avatar.avif     foto de perfil (384 px); avatar.jpg é o fallback e a imagem de compartilhamento
+assets/icons/              favicon SVG e apple-touch-icon
+favicon.ico                favicon legado (16 e 32 px)
+CNAME                      domínio personalizado do GitHub Pages
+.nojekyll                  publica os arquivos como estão, sem processamento Jekyll
+```
 
-Ever wanted to add more links to your Instagram bio? LinkFree does just that! It gathers all of your links into one page that is easy to navigate.
+## Editar links
 
-## What are the benefits?
+Cada link é um item de `.links-grid` em `index.html`:
 
-Compared to other solutions, LinkFree is fully customizable and open source!
+```html
+<li>
+  <a class="link" href="https://exemplo.com" target="_blank" rel="noopener">
+    <span class="link-title">Título</span>
+    <span class="link-meta">plataforma ou domínio</span>
+    <svg class="link-arrow" aria-hidden="true"><use href="#i-arrow" /></svg>
+  </a>
+</li>
+```
 
-- No more pesky third party logos
-- Add your custom colors, images and fonts
-- Use full custom analytics and metrics platforms
-- Create your own template or use one made by the community!
+Adicione a classe `featured` ao `<a>` para destacar o card. Ao mudar redes sociais,
+atualize também a lista `sameAs` do JSON-LD no `<head>`.
 
-## How to use?
+## Visualizar localmente
 
-To startoff, you can choose a template for your LinkFree in the "Templates" directory. Then you can clone or fork this repository to adapt it with your information.
+```sh
+python3 -m http.server 8000
+```
 
-You can fork this repository to your own account and there configure your personal page using github pages. This will let you make edits much faster.
+Depois, abra <http://localhost:8000>.
 
-## How to see statistics?
+## Créditos
 
-You can use any statiscs platform of your choosing that is based on client javascript. We recommend the following:
-
-- [Amplitude](https://amplitude.com/homepage)
-- [Hotjar](https://www.hotjar.com/)
-
-You can use any of the functions for load and click defined on the javascript file of the LinkFree template or add code snippets to the Head or Body of the HTML file.
-
-## How to contribute?
-
-There are a three ways you can contribute. You can make changes to the core LinkFree project, create new LinkFree templates or just share your LinkFree.
-
-### Creating Templates
-
-A new template is a general LinkFree that has a distinctive structure or style when compared to previous templates.
-
-To submit one, you just have to make a pull request with your addition in the "Templates" directory.
+- Fontes: Space Grotesk e Chakra Petch, SIL Open Font License 1.1
+  (`assets/fonts/OFL.txt`).
+- Ícones de marca: [Simple Icons](https://simpleicons.org) (CC0 1.0). As marcas
+  pertencem aos respectivos titulares.
