@@ -19,7 +19,7 @@
     const label = theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro";
     themeButton.setAttribute("aria-label", label);
     themeButton.title = label;
-    themeColor.content = theme === "dark" ? "#101714" : "#f5f6f2";
+    themeColor.content = theme === "dark" ? "#101010" : "#f8f7f4";
   }
   applyTheme(root.dataset.theme || (systemTheme.matches ? "dark" : "light"));
   themeButton.addEventListener("click", () => {
